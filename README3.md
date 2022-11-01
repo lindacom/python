@@ -11,7 +11,38 @@ Algorithms - Data structures and algorithms
   
 stack data structures
 ---------------------
+A stack is last in first out (LIFO). Stacks are used in recursion, syntax parsing etc.
+Stack operations include:
+- push(item) - push item to the to of the stack
+- pop(item) - remove and return the top item
+- peek(item) - return the top item without removing it
+- is_empty(item) - return true if the stack is empty
+  
+Depth-first search algorithm (DFS)
+----------------------------------
 
+Queue data structure
+-----------------------------
+e.g. used when data is transferred asynchronously between two processes (printer quues) or CPU scheduling (file severs) etc.
+  
+Additions are made at the rear(tail) of the queue all deletions are made at the front (head)
+  
+First in first out data structure (FIFO)
+  
+Breadth first search algorithm
+-------------------------------------
+
+priority queue data structure
+-----------------------------------
+e.g. optimization algorithms, spam filtering
+  
+get() - retrieve item with the highest priority
+put(item) - add item to priority queue
+is_empty()
+  
+A* search algorithm
+--------------------------
+Clculates shortest path
   
   
 if/else for
