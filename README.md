@@ -21,4 +21,4 @@ You will have a programme called PIP (package installer for python).  To install
 
 Documentation
 ===============
-docs.python.or
+docs.python.org
