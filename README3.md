@@ -3,8 +3,59 @@ Commandline arguments
 To open a file in the commandline type python <filename>
 
 Strings - slicing, formatting, multi line strings
---------------------------------------------------
-string handling
+=================================================
+  
+string methods
+-----------------
+  
+ .upper(), .lower(), .title()
+  
+string functions
+-----------------
+split - split strig into multiple strings. e.g .split(" ") will split by space character into an array of strings
+  
+join - join individual strings into a single string e.g.
+  
+```
+letters = ["a", "b", "c"]
+print(",".join(letters))
+```
+  
+printing strings
+-----------------------
+use triple quotes if string wil span multiple lines e.g print(''' bla bla bla
+  bla bla ''')
+  
+finding the length (number of words) in a string
+------------------------------------------------
+first split the string then use the length method e.g print(len(text.split()))
+  
+placing variables in strings
+----------------------------
+use an f string before the string e.g.
+  
+```
+day = 25
+month = 'October'
+temp = -15
+  
+print(f"Today is {month} {day} and it's {temp}degrees outside")
+  
+Concatingting strings
+---------------------------
+you can concatinate strings and string variables using plus
+  
+e.g "hello" + "world"
+  
+e.g. 
+  
+```
+str1 = 'hello'
+str2 = 'world'
+str1 + " " + str2
+```
+  
+N.b. concatination doesn't add space, you have to manually add i but the print function does add a space so no need to add one.
 
 Algorithms - Data structures and algorithms
 ===================
