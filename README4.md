@@ -358,7 +358,46 @@ if __name__ -- __main__":
 files = ["png/monster01.png", "png/monster02.png"]
 create_zip(files)
 ```
+Read zip fil and extract files:
 
+```
+import zipfile
+
+def read_zip():
+with zipfile.zipFile('archive.zip', 'r') as archive:
+print(archive.namelist())
+
+def retrieve_file_info_zip():
+with zipfile.zipFile('archive.zip', 'r') as archive:
+file_info = archive.getinfo('description01.txt')
+print(file_info)
+
+def read_file_in_zip():
+with zipfile.zipFile('archive.zip', 'r') as archive:
+with archive.open('description01.txt') as file:
+print (file.read())
+
+def extract_file(archive, file_to_extract):
+with zipfile.zipFile(archive, 'r') as my_archive:
+my_archive.extract(file_to_extract)
+
+if __name__ = "__main__":
+extract_file('archive.zip', 'description01.txt')
+```
+
+Temporary files:
+using the tempfile module. Files are automatically deleted when the file is closed
+Open in write and read file w+
+
+N.b. python puts a dursor in the file after writing. To go back to the beginning of the file (so that you can read it) use seek()
+
+```
+def work_with_temporary_file():
+with tempfile.Temporaryfile('w+') as tf:
+tf.write('this is a sntence')
+tf.seek(0)
+print(tf.read())
+```
 
 
 
