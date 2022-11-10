@@ -212,11 +212,7 @@ sets - created with curly braces. order of items is not important
 tuples - created with curly braces duplicates are ignored cannot append to tuples
 dictionary - created with curly braces. key value pairs. keys must e unique
 
-external data
-----------------
-input, output, csv, json files
-n.b. system only writes to file when ou close the file in the code
-n.b. write overrites data in file so use append instead if you want to add to existing data
+
 
 functions
 --------
