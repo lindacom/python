@@ -19,6 +19,7 @@ join - join individual strings into a single string e.g.
 ```
 letters = ["a", "b", "c"]
 print(",".join(letters))
+  
 ```
   
 printing strings
@@ -39,6 +40,8 @@ day = 25
 month = 'October'
 temp = -15
   
+```
+  
 print(f"Today is {month} {day} and it's {temp}degrees outside")
   
 Concatingting strings
@@ -53,12 +56,109 @@ e.g.
 str1 = 'hello'
 str2 = 'world'
 str1 + " " + str2
+  
 ```
   
 N.b. concatination doesn't add space, you have to manually add i but the print function does add a space so no need to add one.
 
 Algorithms - Data structures and algorithms
-===================
+===========================================
+  
+Data strucures - lists, dictionaries, tuples and sets
+------------------------------------------------------
+
+Dictionaries - collection that is unordered indexed and mutable data structures. no duplicate keys.
+Stores data in key value pairs.  Keeps insertion order.  Created using curly braces.
+  
+list - collection that is orderable and changeable. Allows duplicate elements. Created using brackets.
+  
+Tuple - collection that is ordered and unchangeale and is indexed. Allows duplicate members.
+  
+Sets - collection which is unordered and unindexed. No duplicate members. The only way to access a set is by looping through the set.
+  
+Create a dictionary
+  
+```
+sal_info = {'Austin':19185, 'boston':90171}
+  
+To reset a value
+```
+sal_info['boston] = 95123
+```
+  
+to add an element 
+  
+```
+sal_info['Atlanta'] = 91234
+```
+To find the length of a dictionary
+  
+```
+len(sal_info)
+```
+  
+To delete an element
+  
+```
+del sal_info['Atlanta']
+```
+  
+To empty a dictionary
+  
+```
+sal_info.clear()
+```
+  
+To create an empty dictionary
+  
+```
+sal_info = dict()
+```
+  
+Iterating through a dictionary
+  
+```
+if ('Dallas' in sal_info):
+  print(sal_info['Dallas'])
+  else:
+  print("not found")
+```
+  
+N.b. you can use not in to check the absnce of a key
+  
+For loop
+print values
+  
+```
+for location in sal_info:
+  print(sal_info[location])
+```
+  
+print keys
+  
+```
+for location in sal_info:
+  print(location)
+```
+  
+print key value pairs
+  
+```
+for k,v in sal_info.items()
+  print("the key is", k, "the value is ", v)
+  
+```
+  
+Dictionary methods:
+  
+.get(), .keys(), d.values(), d.items(), .max(), .min(), .pop(), d.popitem(), d.sorted(), .copy()
+  
+sort by keys and values:
+  
+print (sorted(sal_info.keys()))
+  
+print(sorted(sal_info.values()))
+ 
   
 stack data structures
 ---------------------
