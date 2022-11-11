@@ -47,6 +47,34 @@ To stop runing the server enter ctrl + C
   
 Create an app in your project
 -----------------------------
+A project can contain multiple apps.
+
+python manage.py startapp <appname>
+
+- Expand the app and open the views.py file.  In this file import HttpResponse.
+- create a module file called urls.py hich imports views
+
+N.b. you now have a project url.py file and an application url.py file in your project.
+
+- in the project urls.py file import include from django.  urls and in the url pattern array add a path to the application 
+with an include <app.urls>
+
+N.b. you can alo add an empty path to make the app the homepage of the project
+
+run serer - python manage.py runserver
+
+n.b. when we access the application url:
+
+1. it first looks in our projects url.py module and looks for the pattern
+2. it then goes to the application url.py module
+3. it then finds the empty route paggern - views.home function
+4. it then goes to viewshome and returns httpresponse fro the home function.
+
+To add ore aplication routes add a function in the views.py file then add a path in the appliction urls.py file pointing to that function.
+
+Templates
+----------
+
 
   
 Tutorials
