@@ -171,6 +171,203 @@ N.b. in url links you can either hard code route or use django url path to speci
   
 e.g. in the navigation section add href = "{% url 'blog-home' %}"
   
+Admin
+-----
+Create admin user:
+  
+Create an admin user to login on the /admin page
+  
+1. create database and auth_user table. python manage.py makemigrations.  The message returned to the terminal is no changes detected. 
+  then enter python.manage.py migrate. The auth user table will now exist
+2. create super user - python manage.py createsuperuser. Enter username: linda email: linda@linda.com and password python01. Super user is now created
+3. run the server - python manage.py runserver
+4. In the browser reload the admin page and sign in to django administration site administration with the superuser credentials you just created.  
+  go to users section and click the username
+  
+N.b. you can see the password is hashed. You can change permissions here.
+  
+Create new users from the admin page:
+
+1. Back in the users screen click the add users button. Create a user: TestUser and password: testing321 and click save and continue editing
+  
+N.b. the user is created with admin status only.  Staff status - user can log into admin site. Super user status - all permissions delet etc. 
+  you can also delete this user on this screen.
+  
+2. Enter email and click save.
+  
+Database and migrations
+-------------------------
+Django has its own ORM (object relational mapper). Database structure is represented as classed called models. In the application you will see a
+  models.py file. Classes you create inherit from the django model class
+  
+1. Create a model
+  
+e.g. class Post(models.Model)
+  
+N.b. each class is its own table in the database
+  each attribute is a diffrent field in the database
+  
+e.g.
+  
+```
+from django.db import models
+from django.utils import timezone
+from django.contrib.auth.models import user
+  
+class Post(models.Model):
+  title = models.CharField(ma_length=100)
+  content = models.TextField()
+  date_posted = models.DateTimeField(default = timezone.now)
+  
+  # deletes post if user is deleted
+  
+  author = models.ForeignKey(User, on_delete=models.CASCADE)
+  
+```
+  
+2. After adding a model run migrations to update database with changes - pythong manage.py makemigrations
+  
+N.b. expand migrations folder to see 0001_initial.py file has been created. This will be run with the migrate command.
+  
+N.b. to view sql code which will be used when migrate runs you can enter python manage.py sql migrate <appname> 0001
+  
+3. run the migrate command python manage.py migrate
+  
+Query database using model:
+  
+Run the shell- python manage.py shell. This will bring up a python prompt. You can write python code or work with django objects here
+
+to query all users e.g.
+  
+```
+from blog models import Post
+from django.contrib.auth.models import User
+
+user.objects.all()
+```
+  
+To get the first, last record or filter records e.g.
+  
+```
+user.objects.first()
+user.objects.last()
+user.objects.filter(username = 'linda')
+```
+  
+You can use dot notation to query the attributes e.g. user.id
+  
+create a post for a user e.g.
+  
+```
+user = user.objects.get(id=1)
+```
+  
+With the user variable you can create a post object e.g
+  
+```
+post_1 = Post(title='Blog 1', content='first content', author= user)
+```
+  
+N.b. date is specified in the post model but if no date is entered it will use default
+  
+save the object to the database e.g.
+  
+```
+post_1.save()
+```
+  
+then query the post table to check that the post has been saved e.g
+  
+```
+post.objects.all()
+```
+  
+N.b. in the models.py file you can create a dunder method which specifies how post should be prited out.
+  
+Dunder method - in python dudder methods start and end with double underscores. They are not meant to be invoked directly but the invocation
+  happens internally from the class on a certain action.
+  
+You then need to exit and reopen the shell - python manage.py shell
+  
+N.b. to return al posts that a user has created eg.
+  
+```
+user.post_set
+user.post_set.all()
+```
+  
+Passing database information to views
+----------------------------------------
+  
+In views.py file import Post odel and in the function query the database e.g.
+  
+```
+from .models import Post
+  
+def home(request):
+  context = { 'posts' : Post.objects.all() }
+  
+```
+  
+Start the server - python manage.py runserver and viw the webpage to view data from database.
+  
+Register models with the admin page:
+  
+Using the admin.py file so that models can be viewed at /admin
+  
+1. import the model e.g. 
+  
+```
+from .models import Post
+  
+  admin.site.register(Post)
+  
+```
+  
+Open admin age in the browser /admin you will see the applicaton name and the model listed. Here you can change details, delet and add.
+  
+User registration:
+  
+1. create a user app - python manage.py startapp users
+2. Register the app in the project settings.py file (using the class name from the appp.y file)
+3. Create user registration page. In users app open the views.py module and create a register view. N.b. class will create a form automatically e.g.
+  
+```
+from djangocontrib.auth.forms import UserCreationForm
+  
+def register(request):
+  if request.method == 'POST':
+  form = UserCreationForm(request.POST)
+  else:
+  form = UserCreationForm()
+  return rendr(request, 'users/register.html', {'form':form})
+  
+```
+  
+N.b. you can reference base template in one app from another app
+  
+4. Create a template to use the form - Create template folder, create sub folder with the same name as the applicaton then create template html file
+  in the template file enter the code to add the form {{ form }}
+  
+5. import view in project urls.py file and add path in the url patterns section
+6. Run server - python manage.py runserver
+  
+N.b. flash messages can be used - available flash messages are message.debut, message.info, message.success, message.warning and message.error
+  
+N.b. to add more fields to a pre-built form you need to create a new form that inherits from that form.  Create a forms.py file and import forms from django
+  
+N.b. crispy forms makes working with forms e.g styling in django easier. To install enter pip nstall django-crispy-forms
+  in the project settings module you then need to tel django this is an installed app
+
+  
+
+  
+
+
+
+  
+
+  
   
   
 
@@ -179,3 +376,7 @@ e.g. in the navigation section add href = "{% url 'blog-home' %}"
 Tutorials
 ==============
 https://www.youtube.com/watch?v=UmljXZIypDc
+  
+Documentation
+================
+docs.djangoproject.com
