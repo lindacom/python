@@ -73,7 +73,106 @@ n.b. when we access the application url:
 To add ore aplication routes add a function in the views.py file then add a path in the appliction urls.py file pointing to that function.
 
 Templates
-----------
+----------------
+Create a template:
+In the app create a folder called templates
+create a subfolder named the same as the app and create a templates.html file here
+  
+N.b. in the apps.py file notice there is now a class file for the application config
+  
+Copy the class name from the apps.py file
+  
+In the project settings.py file add a path to the configuration class in the installed aps section <application>.apps.<appclassconfig>
+  
+N.b. any time you create an application add to this list so django can search your templates. Django also looks for 
+database info and models here
+  
+Load template:
+e.g.
+  
+```
+def home(request):
+  return render (request, '<template application name>;/<template html file name>')
+```
+Passing data into a template
+----------------------------------
+  
+e.g. create a dictionary called posts
+  
+In the function create a dictionary with a key and value posts
+then pass the dictionary with the request and template file name
+  
+```
+def home(request):
+  context = {'posts': posts }
+  return render (request, 'blog/home.html, context)
+```
+  
+In the template file loop through the dictionary keys 
+  
+{% %} - opens a code block. Used for if statements and for loops
+
+{{ }} - access a variable
+  
+e.g.
+  
+```
+{% for post in osts %}
+  <h1>{{ post.title }} </h1>
+  {% endfor %}
+  
+```
+  
+```
+{% if title %}
+  <title> Django blog - {{ title }} </title>
+  {% else %}
+  <title>Django blo </title>
+  {% endif %}
+  
+```
+  
+You can lso pas a dictionary directly into a request.
+  
+e.g.
+  
+```
+def about(request):
+  return render(request, 'blog/about.html', {'title':'about'})
+  
+```
+  
+N.b. put repeatable code in template inheritance. To do this:
+  
+- create a template file called base.html with block content in body. template files can overwrite the block content
+- in the template file extend the base template then wrap content in a content block
+  
+Add Bootstrap to the application
+--------------------------------
+  
+Bootstrap code in base template file:
+  
+Add bootstrap starter template code (head section and script tags) to the base template file.  Other template files will inherite this.  
+  
+Wrap body of base template in a div with class 'container'
+  
+Create a css file:
+N.b the static sub directory must use the same name as the application
+  
+- Create the directory static > application name > main.css
+- Copy and paste your css code into this file
+- include the css code from the base tmplate - at the top of the file add {% load static %} then in the head section of the html
+  add a link to the cssfile e.g. href="{% static 'blog/main.css' %}"
+  
+N.b. ctrl + f5 to do a hard refresh in the browser or stop and restart the server
+  
+N.b. in url links you can either hard code route or use django url path to specify the name that points to the view which can be 
+  found in the urls.py file
+  
+e.g. in the navigation section add href = "{% url 'blog-home' %}"
+  
+  
+  
 
 
   
