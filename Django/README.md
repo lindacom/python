@@ -31,8 +31,13 @@ To create a project enter django-admin startproject <projectname>
   
 project files:
   
-manage.py - allows you to run command line commands
-init.py - tells python it is a python package
-settings.py - to change settings and configuration
-urls.py - set up mapings for urls to send user to
-wsgi.py - application and servr communicate
+- manage.py - allows you to run command line commands
+- init.py - tells python it is a python package
+- settings.py - to change settings and configuration
+- urls.py - set up mapings for urls to send user to
+- wsgi.py - application and servr communicate
+
+Create an app in your project
+---------------------------------
+In Django static files like CSS and Javascript need to be in the static directory in the app.  
+Create a folder called static and then a sub folder with the same name as the app.  Put your files in the sub folder.
