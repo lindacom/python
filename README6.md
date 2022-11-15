@@ -151,6 +151,32 @@ Save the file - ctrl + x then Y then enter
   
 Edit settings.py file and pass in values from config file:
 - Enter sudo nano django_project/django_project/settings.py
+- In this settings file import json
+- to load in config file just under the import json statement enter - with open('/etc/config.json') as config_file: config=json.load(config_file)
+- In secret key section enter config['SECRET_KEY'] then set DEBUG=false
+- scroll down to the email_host_user section at bottom of the file
+- change environ.get to config.get for both email_host_user and email_host_password
+- Save the file ctrl + x then y then enter
+  
+The app should now be deployed
+  
+Test aplication
+------------------
+  
+- diable port 8000 - enter sudo ufw delete allow 8000
+- allow http traffic - sudo ufw allow http/tcp
+- restart apache server - sudo service apache2 restart
+  
+Debugging live application
+---------------------------
+  
+- In site set debug to true in settings file - enter sudo nano django_project/django_project/settings.py and set debug to true
+save the file
+- restart apache server - sudo ervice apache2 restart
+  
+N.b. if error with database permissions on sign up screen of the app in the commndline enter sudo chmod 775 django_project/ then restart apche server
+
+
 
   
 
