@@ -209,7 +209,29 @@ enter ls -la to see permission changes
   
 N.b. for djano project you will see www-data is the owner
 
+to change owner for media folder enter sudo chown -R :www-data django_prject/media
+enter sudo chmod -R 775 django_project/media
   
+Create a config file:
+Move sensitive information eg. secret key, email, usernme and password, database user and password to a config file
+  
+to create a config.json file enter sudo touch /etc/config.json
+N.b. sudo touch command creates a file
+  
+To get secrt key enter sudo nano django_project/ from app
+enter django_project/settings.py
+  
+From the settings file copy secret key and then detet it from the file. (The secret key will be loaded in from the config file instead)
+Save the file - ctrl + x then Y then enter
+  
+open config.json file - udo nano /etc/config.json
+In this empty file add open and closing braces and then enter key "SECRET KEY" and paste the secret key copied from the settings file as the value.
+Enter key "EMAIL_USER" with a value
+Enter key "EMAIL_PASS" with a value
+Save the file - ctrl + x then y then enter
+  
+Edit settigs.py file and pss in values from config file:
+Enter sudo nano django_project/django_project/settings.py
 
 
 Documentation
