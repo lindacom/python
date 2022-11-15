@@ -46,6 +46,30 @@ Add limited user:
 You now have a new user on the Linux server 
 In the terminal enter exit.
   
+Log in to serer as new user:
+In the Bash termina commandline SSH into the server but instead of root enter the userame and ip address.  Enter password
+You are now logged in as user@servername
+  
+SSH key based authentication:
+Set up SSH key based authentication so that you can login without a password.  This is more secure and convenient and useful for running
+  remote scripts that connect to server
+ Enter pwd you wil see you are i the home directory
+  
+Make a new directory in the home folder:
+mkdir - mae a directory
+-p - make entire tree of directory
+~ - home folder
+  
+enter ls -la to see list of files
+
+copy SSH keys to web server:
+in the other terminal (local) enter ssh-keygen -b 4096 to generate a public/private rse key pair
+in the enter file to save key statement press enter to accept. Enter y to overwrite. in enter passphrase press enter to leave blank
+  two kys have now been created - identifiction and public
+  
+N.b. ublic key is added to server so you can log in without password
+  
+  
 
 
 Documentation
