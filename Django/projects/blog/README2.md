@@ -262,8 +262,20 @@ save the file
 restart apache server - sudo ervice apache2 restart
   
 N.b. if error with database permissions on sign up screen of the app in the commndline enter sudo chmod 775 django_project/ then restart apche server
+  
+Deleting server in Linode
+-------------------------
+in Linode go to settings for the server and click the delete button
+  
+Creating a WordPress server i Liode
+------------------------------------
+Create > linode
+Create from stackscript
+Linode stackscripts
+Wordpress
 
 
 Documentation
 =============
 Linode cloud platform - cloud.linode.com free 60 day account at https://linode.com/coreyschafer
+Django deployment checklist - https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
