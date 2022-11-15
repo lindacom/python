@@ -95,6 +95,18 @@ Eter ctrl + x and Y to save. Press enter.
   
 Restart the service - sudo systemctl restart sshd
   
+Install firewall:
+Install ufw - uncompicated firewall
+  
+1. In the commandline enter sudo apt-get install ufw
+2. enter sudo ufw default allow outgoing
+3. enter sudo ufw default deny incoming - denies incoming traffic
+4. To allow ssh enter sudo ufw allow ssh
+5. to allow a port etr sudo ufw allow 8000 (this is localhost)
+6. To enable the above comands enter sudo ufw enable
+7. Eter Y to proceed
+8. Etr sudo ufw status to see the status of what is being allowd. N.b. port 22 is SSH
+  
 
 
 Documentation
