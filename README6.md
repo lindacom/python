@@ -1,8 +1,8 @@
 Deploy a Python application to a Linux Cloud server
 ===================================================
 
-Set up server, install updates, set hostname and host file and add a user, add SSH key based auth and update permissions
-----------------------------------------------------------------------------------------------------------------------------
+Set up server, install updates, set hostname and host file and add a user, add SSH key based auth and update permissions and install firewall
+---------------------------------------------------------------------------------------------------------------------------------------------
 
 1. Set up cloud server - e.g. Linode Cloud server. Choose a distribution (images Ubunto), choose a region
 2. Once the server is created copy the SSH access credentials
@@ -40,6 +40,17 @@ Update permissions for SSH directory:
 3. Don't allow root login and don't allow password authentication - Enter sudo nano /etc/ssh/sshd_config Enter password
 4. In permit root login enter no. Uncomment password authentication on and set it to no
 5. Restart the service - sudo systemctl restart sshd
+  
+Install firewall (ufw - uncomplicated firewall):
+  
+1. In the commandline enter sudo apt-get install ufw
+2. enter sudo ufw default allow outgoing
+3. enter sudo ufw default deny incoming - denies incoming traffic
+4. To allow ssh enter sudo ufw allow ssh
+5. to allow a port entr sudo ufw allow 8000 (this is localhost)
+6. To enable the above comands enter sudo ufw enable
+7. Enter Y to proceed
+8. Entr sudo ufw status to see the status of what is being allowd. N.b. port 22 is SSH
   
 
 
