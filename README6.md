@@ -122,6 +122,31 @@ In the same file grant access to wsgi file within project so apache can access i
 ```
 enter WSGIScriptAlias/ /home/<user><projectname><projectname>/wsgi.pi
 enter demon process - e.g. django_app python-path=/home/user/django_project pythong -home = /home/user/django_project/env
+Enter WSGIProcessGroup django-app
+enter ctrl + x then s then enter to save ad exit file
+
+enable site through apache:
+Enter cd to go bacck to home directory
+Enter sudo a2ensite django_project
+  
+N.b. a2ensite means apache2 enabled site
+  
+Disable default site - enter sudo a2dissite 000-default_conf
+  
+Change file permissions:
+N.b.Apache needs access to sql lte database(file), media folder etc. You therefore need to change the owner 
+  
+enter sudo chown :www-data django_project/db.sqlite
+  
+N.b. chown means change owner
+  
+enter sudo chmod 664 django_project/db.sqlite3
+  enter sudo chown :www-data django_project/
+enter ls -la to see permission changes
+  
+N.b. for djano project you will see www-data is the owner
+
+  
   
 
 
