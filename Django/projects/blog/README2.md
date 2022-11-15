@@ -14,7 +14,7 @@ Set up Linode Cloud server
 9. Once the server is created copy the SSH access credentials
 10. Click the networking tab
 
-N.b. you neet Putty to SSH into an application - https://www.putty.org or Linux Bash Shell or GIT Bash
+N.b. you need Putty to SSH into an application - https://www.putty.org or Linux Bash Shell or GIT Bash
 
 11. In Windows open GIT Bash application twice (to have two terminal windows (one for cloud server and one for local machine.)
 12. In the left trminal (cloud) paste the SSH command and enter password. You will then be SSH's into your web server - root@localhost.
@@ -106,6 +106,18 @@ Install ufw - uncompicated firewall
 6. To enable the above comands enter sudo ufw enable
 7. Eter Y to proceed
 8. Etr sudo ufw status to see the status of what is being allowd. N.b. port 22 is SSH
+  
+Deploy application on web server
+--------------------------------
+N.b. when you are using a virtual environment yu need to create a requirements.txt file to capture everythig needed to install - dependencies
+  
+1. In the terminal window (local command prompt) activate the application - e.g. source Desktop/django-env/bin/activate
+  
+N.b. entering pip freeze shows a list of project dependencies
+  
+2. Enter pip freeze > requiements.txt to create a file
+3. Enter cd Desktop
+4. Enter scp -r myapp/django_project ssh user@ip: ~/ to copy project from home directory to server
   
 
 
