@@ -73,6 +73,28 @@ Enter source venv/bin/activate
 N.b. you can now see venv at the beginning of the prompt
 Enter pip intall -r requirements.txt
   
+Change settings in settings.py file:
+  
+enter sudo nano django_project/settings.py
+In allowed host section enter ip of server as a string
+Just above the static_url section enter STATIC_ROOT = os.path.join(BASE_DIR, 'STATIC') enter ctrl + x then Y then enter
+enter python manage.py collect static
+  
+Run application on django server in cloud:
+enter python manage.py runserver 0.0.0.0:8000
+N.b. 0.0.0.0 allows you to go to your ip address:8000
+  
+Now that the application is working run the appliation on apache:
+WSGI - web service gateway interface allows webserver (apache) to talk to web application (django)
+  
+install apache - sudo apt-get install apache2
+install wsgi - sudo apt-get install libapache2-mod-wsgi-py3
+install apache web server - enter cd etc/apache2/sites-available/ - this is where apache configuration files live
+  
+create and edit apache cnfiguration file
+  
+enter ls to see there are default configuration files in the directory
+enter sudo dp 000-default.conf django_project.conf to create a copy of default file  
 
 
 
