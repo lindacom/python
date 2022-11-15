@@ -59,6 +59,20 @@ Deploy application on web server
 3. Enter cd Desktop
 4. Enter scp -r myapp/django_project ssh user@ip: ~/ to copy project from home directory to server
   
+Run the application on the cloud server
+---------------------------------------
+Create a virtual environment:
+Install pip - sudo apt-get install python3-pip
+Enter sudo install ython3-pip -d ~/
+Enter sudo apt-get install python3 -venv
+Enter ls django_project/ to see venv listed
+  
+Activate virtual environment and install dependencies:
+Enter cd django_project to go to the project directory
+Enter source venv/bin/activate
+N.b. you can now see venv at the beginning of the prompt
+Enter pip intall -r requirements.txt
+  
 
 
 
