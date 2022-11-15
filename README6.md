@@ -20,4 +20,15 @@ Add limited user:
 3. Press enter through the next steps to leave blank
 4. Enter Y to confirm details are correct
 5. To allow new user to run root commands (sudo) enter add user <username> sudo. The user is now added to the group 'sudo'
+  
+Add SSH key based authentication:
+1. Make a new directory in the home folder:
+mkdir - mae a directory
+-p - make entire tree of directory
+~ - home folder
+enter ls -la to see list of files
+
+2. copy SSH keys to web server - in the other terminal (local) enter ssh-keygen -b 4096 to generate a public/private rse key pair
+in the enter file to save key statement press enter to accept. Enter y to overwrite. in enter passphrase press enter to leave blank
+
 
