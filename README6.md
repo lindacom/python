@@ -62,41 +62,36 @@ Deploy application on web server
 Run the application on the cloud server
 ---------------------------------------
 Create a virtual environment:
-Install pip - sudo apt-get install python3-pip
-Enter sudo install ython3-pip -d ~/
-Enter sudo apt-get install python3 -venv
-Enter ls django_project/ to see venv listed
+- Install pip - sudo apt-get install python3-pip
+- Enter sudo install ython3-pip -d ~/
+- Enter sudo apt-get install python3 -venv
+- Enter ls django_project/ to see venv listed
   
 Activate virtual environment and install dependencies:
-Enter cd django_project to go to the project directory
-Enter source venv/bin/activate
+- Enter cd django_project to go to the project directory
+- Enter source venv/bin/activate
 N.b. you can now see venv at the beginning of the prompt
-Enter pip intall -r requirements.txt
+- Enter pip intall -r requirements.txt
   
-Change settings in settings.py file:
-  
-enter sudo nano django_project/settings.py
-In allowed host section enter ip of server as a string
-Just above the static_url section enter STATIC_ROOT = os.path.join(BASE_DIR, 'STATIC') enter ctrl + x then Y then enter
-enter python manage.py collect static
+Change settings in settings.py file:  
+- enter sudo nano django_project/settings.py
+- In allowed host section enter ip of server as a string
+- Just above the static_url section enter STATIC_ROOT = os.path.join(BASE_DIR, 'STATIC') enter ctrl + x then Y then enter
+- enter python manage.py collect static
   
 Run application on django server in cloud:
-enter python manage.py runserver 0.0.0.0:8000
-N.b. 0.0.0.0 allows you to go to your ip address:8000
+- enter python manage.py runserver 0.0.0.0:8000 - N.b. 0.0.0.0 allows you to go to your ip address:8000
   
 Now that the application is working run the appliation on apache:
-WSGI - web service gateway interface allows webserver (apache) to talk to web application (django)
+- install apache - sudo apt-get install apache2
+- install wsgi - sudo apt-get install libapache2-mod-wsgi-py3. WSGI - web service gateway interface allows webserver (apache) to talk to web application (django)
+- install apache web server - enter cd etc/apache2/sites-available/ - this is where apache configuration files live
   
-install apache - sudo apt-get install apache2
-install wsgi - sudo apt-get install libapache2-mod-wsgi-py3
-install apache web server - enter cd etc/apache2/sites-available/ - this is where apache configuration files live
-  
-create and edit apache cnfiguration file
-  
-enter ls to see there are default configuration files in the directory
-enter sudo dp 000-default.conf django_project.conf to create a copy of default file  
+create and edit apache cnfiguration file:
+- enter ls to see there are default configuration files in the directory
+- enter sudo dp 000-default.conf django_project.conf to create a copy of default file  
+- To edit the new conf file enter sudo nano django_project.conf
 
-To edit the new conf file enter sudo nano django_project.conf
 map requests starting with static to the static directory by entering the following in the file
   
 ```
@@ -120,33 +115,43 @@ In the same file grant access to wsgi file within project so apache can access i
   Require all granted
   </Directory>
 ```
-enter WSGIScriptAlias/ /home/<user><projectname><projectname>/wsgi.pi
-enter demon process - e.g. django_app python-path=/home/user/django_project pythong -home = /home/user/django_project/env
-Enter WSGIProcessGroup django-app
-enter ctrl + x then s then enter to save ad exit file
+- enter WSGIScriptAlias/ /home/<user><projectname><projectname>/wsgi.pi
+- enter demon process - e.g. django_app python-path=/home/user/django_project pythong -home = /home/user/django_project/env
+- Enter WSGIProcessGroup django-app
+- enter ctrl + x then s then enter to save ad exit file
 
 enable site through apache:
-Enter cd to go bacck to home directory
-Enter sudo a2ensite django_project
-  
-N.b. a2ensite means apache2 enabled site
-  
-Disable default site - enter sudo a2dissite 000-default_conf
+- Enter cd to go bacck to home directory
+- Enter sudo a2ensite django_project. N.b. a2ensite means apache2 enabled site 
+- to Disable default site - enter sudo a2dissite 000-default_conf
   
 Change file permissions:
-N.b.Apache needs access to sql lte database(file), media folder etc. You therefore need to change the owner 
+N.b.Apache needs access to sql lte database(file), media folder etc. You therefore need to change the owner. chown means change owner 
   
-enter sudo chown :www-data django_project/db.sqlite
+- enter sudo chown :www-data django_project/db.sqlite
+- enter sudo chmod 664 django_project/db.sqlite3
+- enter sudo chown :www-data django_project/
+- enter ls -la to see permission changes. N.b. for djano project you will see www-data is the owner
+- to change owner for media folder enter sudo chown -R :www-data django_prject/media
+- enter sudo chmod -R 775 django_project/media
   
-N.b. chown means change owner
+Create a config file:
+Move sensitive information eg. secret key, email, usernme and password, database user and password to a config file
   
-enter sudo chmod 664 django_project/db.sqlite3
-  enter sudo chown :www-data django_project/
-enter ls -la to see permission changes
+- to create a config.json file enter sudo touch /etc/config.json N.b. sudo touch command creates a file
+- To get secrt key enter sudo nano django_project/ from app
+- enter django_project/settings.py
+- From the settings file copy secret key and then detet it from the file. (The secret key will be loaded in from the config file instead)
+Save the file - ctrl + x then Y then enter
+- open config.json file - sudo nano /etc/config.json
+- In this empty file add open and closing braces and then enter key "SECRET KEY" and paste the secret key copied from the settings file as the value.
+- Enter key "EMAIL_USER" with a value
+- Enter key "EMAIL_PASS" with a value
+- Save the file - ctrl + x then y then enter
   
-N.b. for djano project you will see www-data is the owner
+Edit settings.py file and pass in values from config file:
+- Enter sudo nano django_project/django_project/settings.py
 
-  
   
 
 
