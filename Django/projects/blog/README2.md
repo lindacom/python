@@ -107,8 +107,8 @@ Install ufw - uncompicated firewall
 7. Eter Y to proceed
 8. Etr sudo ufw status to see the status of what is being allowd. N.b. port 22 is SSH
   
-Deploy application on web server
---------------------------------
+Deploy application on cloud web server
+--------------------------------------
 N.b. when you are using a virtual environment yu need to create a requirements.txt file to capture everythig needed to install - dependencies
   
 1. In the terminal window (local command prompt) activate the application - e.g. source Desktop/django-env/bin/activate
@@ -119,6 +119,21 @@ N.b. entering pip freeze shows a list of project dependencies
 3. Enter cd Desktop
 4. Enter scp -r myapp/django_project ssh user@ip: ~/ to copy project from home directory to server
   
+In the other terminal (cloud home directory) enter ls you should see the project listed.  Enter ls django_project/ to see project files
+  
+Run the application on the cloud server
+---------------------------------------
+Create a virtual environment:
+Install pip - sudo apt-get install python3-pip
+Enter sudo install ython3-pip -d ~/
+Enter sudo apt-get install python3 -venv
+Enter ls django_project/ to see venv listed
+  
+Activate virtual environment and install dependencies:
+Enter cd django_project to go to the project directory
+Enter source venv/bin/activate
+N.b. you can now see venv at the beginning of the prompt
+Enter pip intall -r requirements.txt
 
 
 Documentation
