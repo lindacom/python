@@ -67,8 +67,33 @@ in the other terminal (local) enter ssh-keygen -b 4096 to generate a public/priv
 in the enter file to save key statement press enter to accept. Enter y to overwrite. in enter passphrase press enter to leave blank
   two kys have now been created - identifiction and public
   
-N.b. ublic key is added to server so you can log in without password
+N.b. public key is added to server so you can log in without password
   
+copy public key to server:
+Use scp command to copy public key and specify location of server. In the terminal enter
+scp ~/.ssh/id_rsa.pub user@ip: ~/.ssh/authorized_key/
+enter password
+enter ls .ssh to see the authorized_keys fle listed
+  
+Updte permissions for SSH directory:
+Owner of the directory - read, write, execute permissions
+owner of files - read, write permissions
+  
+In the terminal enter sudo chmod 700 ~/.ssh/ and eter sudo password
+Eter sudo chmod 600 ~/.ssh/* to add permissions for files in the directory
+exit the terminal
+  
+To test logging in to the server without a password login as user and press enter. You should now be able to log in without a password
+  
+Don't allow root login and don't allow password authentication:
+  
+Enter sudo nano /etc/ssh/sshd_config
+Enter password
+In permit root login enter no
+Uncomment password authentication on and set it to no
+Eter ctrl + x and Y to save. Press enter.
+  
+Restart the service - sudo systemctl restart sshd
   
 
 
