@@ -176,7 +176,9 @@ save the file
   
 N.b. if error with database permissions on sign up screen of the app in the commndline enter sudo chmod 775 django_project/ then restart apche server
 
-
+Documentation
+=============
+Django deployment checklist - https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
   
 
