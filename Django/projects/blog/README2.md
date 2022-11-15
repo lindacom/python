@@ -157,7 +157,34 @@ create and edit apache cnfiguration file
   
 enter ls to see there are default configuration files in the directory
 enter sudo dp 000-default.conf django_project.conf to create a copy of default file  
+  
+To edit the new conf file enter sudo nano django_project.conf
+map requests starting with static to the static directory by entering the following in the file
+  
+```
+Alias /static /home/<user>/<projectname>/static
+<Directory /home/<user><projectname>/static>
+  Require all granted
+  </Directory>
 
+  Alias /static /home/<user>/<projectname>/media
+<Directory /home/<user><projectname>/media>
+  Require all granted
+  </Directory>
+```
+  
+In the same file grant access to wsgi file within project so apache can access it.
+  
+```
+ 
+<Directory /home/<user><projectname>/<projectname>
+  <files wsgi.py>
+  Require all granted
+  </Directory>
+```
+enter WSGIScriptAlias/ /home/<user><projectname><projectname>/wsgi.pi
+enter demon process - e.g. django_app python-path=/home/user/django_project pythong -home = /home/user/django_project/env
+  
 
 
 Documentation
