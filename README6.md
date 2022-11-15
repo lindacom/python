@@ -52,6 +52,13 @@ Install firewall (ufw - uncomplicated firewall):
 7. Enter Y to proceed
 8. Entr sudo ufw status to see the status of what is being allowd. N.b. port 22 is SSH
   
+Deploy application on web server
+--------------------------------
+1. In the terminal window (local command prompt) activate the application - e.g. source Desktop/django-env/bin/activate
+2. Enter pip freeze > requiements.txt to create a file
+3. Enter cd Desktop
+4. Enter scp -r myapp/django_project ssh user@ip: ~/ to copy project from home directory to server
+  
 
 
 
