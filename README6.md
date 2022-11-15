@@ -1,8 +1,8 @@
 Deploy a Python application to a Linux Cloud server
 ===================================================
 
-Set up server, install updates, set hostname and host file and add a user
-------------------------------------------------------------------------
+Set up server, install updates, set hostname and host file and add a user, add SSH key based auth and update permissions
+----------------------------------------------------------------------------------------------------------------------------
 
 1. Set up cloud server - e.g. Linode Cloud server. Choose a distribution (images Ubunto), choose a region
 2. Once the server is created copy the SSH access credentials
@@ -30,5 +30,17 @@ enter ls -la to see list of files
 
 2. copy SSH keys to web server - in the other terminal (local) enter ssh-keygen -b 4096 to generate a public/private rse key pair
 in the enter file to save key statement press enter to accept. Enter y to overwrite. in enter passphrase press enter to leave blank
+  
+3. copy public key to server:
+Use scp command to copy public key and specify location of server - scp ~/.ssh/id_rsa.pub user@ip: ~/.ssh/authorized_key/ and enter password
+  
+Update permissions for SSH directory:
+1. In the terminal enter sudo chmod 700 ~/.ssh/ and enter sudo password
+2. Enter sudo chmod 600 ~/.ssh/* to add permissions for files in the directory
+3. Don't allow root login and don't allow password authentication - Enter sudo nano /etc/ssh/sshd_config Enter password
+4. In permit root login enter no. Uncomment password authentication on and set it to no
+5. Restart the service - sudo systemctl restart sshd
+  
+
 
 
