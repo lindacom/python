@@ -77,6 +77,7 @@ class Employee:
 emp_str_1 = 'john-doe-70000'
 
 new_emp_1 = Employee.from_string(emp_str_1)
+```
 
 - static methods - don't pass anything but has a logical connection to the class. You don't access the instance (self) or
 class (cls) anywhere in the method. e.g:
