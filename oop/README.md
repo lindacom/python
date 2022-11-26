@@ -27,6 +27,26 @@ N.b. you can either call the instance with the method or call the class with the
 print(emp_1.fullname()) or
 print(Employees.fullname(emp_1))
 
+Variables
+----------
+- class variables - should be the same for each instance
+- instance variables - can be unique for each instance e.g. name
+n.b. self can override the class variable
+
+```
+class Employee:
+  num_of_emps = 0
+  
+  def__init__(self, first, pay):
+  
+  Employee.num_of_emps +=1
+  
+emp_1 = Employee('linda', 50000)
+
+print(Employee.num_of_emps)
+
+```
+
 Tools
 =====
 lucidchart - for drawing flow diagrams - https://www.lucidchart.com/
