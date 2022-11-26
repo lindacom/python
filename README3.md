@@ -326,6 +326,50 @@ functions
 --------
 use def keyword to declare a function. indentation is important
   
+Variable scope
+-----------------
+LEGB - These are the scope of order
+- local - variables defined in a function
+- enclosing - variables in local scope enclosing functions
+- global - variables defined at top level of module or explicitly declared as global using the global keyword
+- builtin - names that ar pre defined in python
+  
+N.b. avoid using build in names as function names as it will override the build in 
+  
+global scope:
+  
+If you set a global variable within a function using the global keyword, the variabl will be changed both inside and outise the function
+  
+```
+x = 'global x'
+  
+def text():
+  global x
+  x = 'local x'
+  print(x)
+  
+text()
+print(x)
+```
+for the above output is local x and local x
+  
+enclosing:
+first checks variable in local scope then checks if it is there in local enclosing
+  
+```
+def outer():
+  x = 'outer x'
+  def inner():
+    print(x)
+  inner()
+  print(X)
+outer()
+```
+for the above output is outer x and outer x
+  
+see also non local statements
+
+  
 Error handling
 ------------------
 ```
