@@ -22,6 +22,20 @@ print(",".join(letters))
   
 ```
   
+formatting strings
+-------------------
+```
+greeting = 'hello'
+name = 'Michael'
+message = '{}{}.welcome!'.format(greeting, name)
+print(message)
+```
+N.b. you can alternatively use f formatting by adding f bfore the opening speechmark, putting the varibe names inside the brackets and removing
+  the .format function
+  
+N.b. if you enter print(dir(name)) in the commandline for exmple you get access to see all the methods and attributes available to that variable.
+  print(help(str)) will show the method with description print(help(str.lower))
+  
 printing strings
 -----------------------
 use triple quotes if string wil span multiple lines e.g print(''' bla bla bla
@@ -60,6 +74,12 @@ str1 + " " + str2
 ```
   
 N.b. concatination doesn't add space, you have to manually add i but the print function does add a space so no need to add one.
+  
+Numbers
+===========
+Integers and floats
+-------------------
+N.b. when doing division if the decimal is not dropped to drop the decimal use floor division (using double slashes) e.g. print (3 // 2)
 
 Algorithms - Data structures and algorithms
 ===========================================
@@ -67,16 +87,16 @@ Algorithms - Data structures and algorithms
 Data strucures - lists, dictionaries, tuples and sets
 ------------------------------------------------------
 
-Dictionaries - collection that is unordered indexed and mutable data structures. no duplicate keys.
+- Dictionaries - collection that is unordered indexed and mutable data structures. no duplicate keys.
 Stores data in key value pairs.  Keeps insertion order.  Created using curly braces.
   
-list - collection that is orderable and changeable. Allows duplicate elements. Created using brackets.
+- list - collection that is orderable and changeable (mutable). Allows duplicate elements. Created using brackets.
   
-Tuple - collection that is ordered and unchangeale and is indexed. Allows duplicate members.
+- Tuple - collection that is ordered and unchangeale (immutable) and is indexed. Allows duplicate members.
   
-Sets - collection which is unordered and unindexed. No duplicate members. The only way to access a set is by looping through the set.
+- Sets - collection which is unordered and unindexed. No duplicate members. The only way to access a set is by looping through the set.
   
-Create a dictionary
+Create a dictionary:
   
 ```
 sal_info = {'Austin':19185, 'boston':90171}
@@ -86,7 +106,7 @@ To reset a value
 sal_info['boston] = 95123
 ```
   
-to add an element 
+add an element: 
   
 ```
 sal_info['Atlanta'] = 91234
@@ -97,25 +117,25 @@ To find the length of a dictionary
 len(sal_info)
 ```
   
-To delete an element
+delete an element:
   
 ```
 del sal_info['Atlanta']
 ```
   
-To empty a dictionary
+To empty a dictionary:
   
 ```
 sal_info.clear()
 ```
   
-To create an empty dictionary
+To create an empty dictionary:
   
 ```
 sal_info = dict()
 ```
   
-Iterating through a dictionary
+Iterating through a dictionary:
   
 ```
 if ('Dallas' in sal_info):
@@ -124,30 +144,52 @@ if ('Dallas' in sal_info):
   print("not found")
 ```
   
-N.b. you can use not in to check the absnce of a key
+N.b. you can use not in to check the absence of a key
   
-For loop
-print values
+For loop - print values:
   
 ```
 for location in sal_info:
   print(sal_info[location])
 ```
   
-print keys
+For loop - print keys:
   
 ```
 for location in sal_info:
   print(location)
 ```
   
-print key value pairs
+For loop - print key value pairs:
   
 ```
 for k,v in sal_info.items()
   print("the key is", k, "the value is ", v)
   
 ```
+  
+To loop through items a certain amount of times use range
+  
+```
+for i in range(10)
+  print(i)
+  
+```
+The above prints 0 to nine
+  
+To get a dictionary value that does not exist use the .get method so that the word none is returned instead of an error message
+  
+```
+print(student.get('phone'))
+```
+  
+N.b. as a second argument in the .get function you could enter the string to be returned
+  
+```
+print(student.get('phone', 'not found'))
+  
+conditionals and booleans:
+The is statement checks that it is the same object in memory (nb. this is different to the == statement)
   
 Dictionary methods:
   
@@ -158,7 +200,73 @@ sort by keys and values:
 print (sorted(sal_info.keys()))
   
 print(sorted(sal_info.values()))
- 
+  
+functions:
+N.b. when you do not know how many arguments will be passed to a function use arguments and keyword arguments (*args, **kwargs)
+
+```
+def student_info(*args, **kwargs):
+  print(args)
+  print(kwargs)
+  
+student_info('maths', 'art', name='john', age=22)
+```
+  
+N.b. to pass in variabes called courses and info as arguments and keyword arguments you would enter student_info(*courses, **info)
+  
+List:
+  
+insert to a list (at position 0)
+  
+courses = ['history', 'maths', 'physics']
+courses.insert(0, 'art')
+print (courses)
+  
+To add a list to a list use extend
+
+courses_2 = ['art', 'education']
+  
+courses.extend(courses_2)
+print(courses)
+  
+Remove an item
+courses.remove('math')
+  
+To create a sorted version of the list and keep the original list use sorted
+  
+sorted (courses)
+  
+To find the index of an item
+  
+print(courses.index('compsci'))
+  
+To loop through list and rint index and value use enumerate function
+  
+for index, course in enumerate(courses):
+  print(index, course)
+  
+To start the value at one instead of zero
+  
+for index, course in enumerate(courses, start=1)
+  
+Sets:
+To see which value appears in both sets use intersection function 
+  
+cs_courses = ('history', 'maths', 'physics')
+art_courses = ('history', 'maths', art')
+print(cs_courses.intersection(art_courses))
+  
+To evaluate wht courses are in one set but not in another use the difference function
+  
+print(cs_courses.diffrence(art_courses))
+  
+To print values from both sets use union function n.b. duplicates are removed from sets
+  
+print(cs_courses.union(art_courses))
+  
+To create an empty set use the built in set class with no values
+  
+empty_set = set()
   
 stack data structures
 ---------------------
