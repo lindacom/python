@@ -121,7 +121,81 @@ Add environment variables to Heroku
   
 Update local settings.py file to use the heroku environment variables
 ---------------------------------------------------------------------
-1. Comment out   
+1. Comment out the (old) secret key and add a new secret key using environment variables
+  
+e.g. SECRET_KEY = os.environ.get('SECRET_KEY')
+  
+2. save and commit changes - git status, git add -A, git commit -m "updated email"
+3. push changes to heroku - enter git push heroku master
+4. open the site - enter heroku open
+  
+N.b. you will receive an error related to the database
+  
+Install postgress
+---------------------
+See heroku doeumentation on how to install postgress
+  
+1. Install postgress with windows installer
+  
+N.b. remember to check/add path environment variable to bin directory in the system variables
+  
+Create postgress database on Heroku
+------------------------------------
+N.b. the command heroku pg shows information about the database
+  
+1. To create a free version of the database in the commandline enter heroku addons: create heroku-postgresql.hobby-dev
+  
+Add database settings
+---------------------------
+1. to add database settings (url etc) to settings.py file automatically install the helper -
+pip install django-heroku
+2. then at the top of the settings file enter import django_heroku
+3. At th bottom of the settings.py file enter django_heroku.settings(locals())
+4. save the file
+5. To update the requirements.txt file with the new installed package - in the commandline enter pip freeze > requirements.txt
+  
+N.b. you can view the updated file in the project
+  
+6. in the commandline enter git status (n.b. you will see settings and requirements files have both been updated)
+git add -A, git commit -m"added django-heroku", git push heroku master
+7. enter heroku open
+  
+N.b you should have an error related to the database table (but you should still be able to 
+talk to the database with django)
+  
+Run migrations on Heroku
+--------------------------------------
+In the commandline enter heroku run python manage.py migrate
+  
+N.b. tables have now been created
+  
+Create a super user on Heroku using bash shell
+-----------------------------------------------
+1. enter heroku run bash - to bring up a bash shell for heroku machine (dyno - this is a linux system)
+2. To create a super user enter python manage.py create superuser
+3. enter username and email and password
+4. enter exit
+  
+n.b. now table and super user have been created
+  
+5. enter heroku open
+  
+n.b. the app is now running but with no details displaying from the database
+  
+Test the site 
+----------------
+1. Manually click through the site pages to check login, admin panel, logout, register etc
+2. Create a post 
+3. check an image to ensure the url is displaying that it is coming from AWS
+  
+See also django deployment checklist
+  
+See also heroku documentation
+  
 Documentation
 ===============
 https://devcenter.heroku.com/articles/heroku-cli#install-the-heroku-cli
+
+https://devcenter.heroku.comarticles/heroku-postgress#local-setup
+
+https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
