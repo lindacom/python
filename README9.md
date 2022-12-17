@@ -40,6 +40,13 @@ app = FastAPI()
 def root():
     return { "message": "FastAPI!" }
 ```
+
+N.b. The command uvicorn main:app refers to:
+
+main: the file main.py (the Python "module").
+app: the object created inside of main.py with the line app = FastAPI().
+--reload: make the server restart after code changes. Only use for development.
+
 9. Navigate to the root of the project e.g. cd django_project. Run the application - python -m uvicorn main:app --reload. You will see the json message in 
 the browser
 
