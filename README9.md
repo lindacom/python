@@ -53,6 +53,8 @@ the browser
 
 Documentation
 ===================
-https://docker.com/blog/how-to-dockerize-your-python-applications 
 
+Fast API - https://fastapi.tiangolo.com/tutorial/first-steps/
 Uvicorn - An ASGI web server, for Python. - https://www.uvicorn.org/
+
+Docker - https://docker.com/blog/how-to-dockerize-your-python-applications 
