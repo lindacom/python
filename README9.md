@@ -1,7 +1,14 @@
 How to Dokerize a python app
 ============================
 
+Dockerfile - blue print for building images. Specify base image
+Docker image - template for running containers
+Docker container - running process containing application
+
 1. Install Docker desktop from www.docker.com. NB. the command line tool will also be installed.
+2. Open your project in visual studio code
+3. In visual studio code install the docker extension
+4. In your project create a docker file called Dockerfile with no extension
 
 
 Documentation
