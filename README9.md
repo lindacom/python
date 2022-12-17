@@ -28,9 +28,24 @@ CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0" "--port", "80"]
 7. Activate the virtual environment for your project - Click the python icon in the left side of the screen and expand the venv heading. 
 Select the virtual environment from the list and click the open in terminal button. You will see venv in the command prompt. 
 7. Install the fast api and uvicorn libraries - pip install fastapi uvicorn
-8. run the application - python -m uvicorn main:app --reload
+8. Create a main.py file in the root of your project with the following information
+
+```
+from fastapi import FastAPI
+
+
+app = FastAPI()
+
+@app.get("/")
+def root():
+    return { "message": "FastAPI!" }
+```
+9. Navigate to the root of the project e.g. cd django_project. Run the application - python -m uvicorn main:app --reload. You will see the json message in 
+the browser
 
 
 Documentation
 ===================
 https://docker.com/blog/how-to-dockerize-your-python-applications 
+
+Uvicorn - An ASGI web server, for Python. - https://www.uvicorn.org/
