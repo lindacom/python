@@ -49,6 +49,9 @@ app: the object created inside of main.py with the line app = FastAPI().
 
 9. Navigate to the root of the project e.g. cd django_project. Run the application - python -m uvicorn main:app --reload. You will see the json message in 
 the browser
+10. In the root of the project create a dockerignore file with no extension.  Search the internet for what can be included in this file.
+11. Ensure you have a requirements.txt dependencies file in your project (pip freeze > requirements.txt)
+12. Build docker container - in the terminal enter docker build -t <containername>
 
 
 Documentation
