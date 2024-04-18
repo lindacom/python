@@ -19,7 +19,7 @@
 19. Recursive programming SEE README3
 20. Debugging - stack trace SEE README3
 21. Python frameworks - Django
-22. Testing
+22. Testing SEE README5
 
 README1
 Installing Python
