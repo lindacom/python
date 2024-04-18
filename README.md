@@ -20,3 +20,11 @@
 20. Debugging - stack trace
 21. Python frameworks - Django
 22. Testing
+
+README1
+Installing Python
+Create a python file
+Managing packages and virtual environments
+Environment variables
+Modules
+
