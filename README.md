@@ -28,3 +28,6 @@ Managing packages and virtual environments
 Environment variables
 Modules
 
+README2
+Python and visual studio
+
