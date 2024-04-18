@@ -31,3 +31,14 @@ Modules
 README2
 Python and visual studio
 
+README6 
+Build a web application in Python with PywebIO
+
+README7 
+Deploy a Python application to a Linux Cloud server
+
+README8 
+Add and use a domain name for python application
+
+README9
+How to Dokerize a python app
